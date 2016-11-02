@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <canvas id="canvas" width="800" height="600"></canvas>
+        <script src="robot-arm.js"></script>
+        <script>
+            // Initialize the robot arm
+            var canvas = document.getElementById("canvas");
+            var robotArm = new RobotArm(canvas);
+            robotArm.speed=800;
+            // Either use loadLevel or randomLevel to create a start scene
+            robotArm.randomLevel(9, 2);
+            for (var i = 0; i < 9; i++) {
+              
+            
+            robotArm.moveRight();
+          }
+           for (var i = 0; i <9; i++) {
+             
+           
+           robotArm.moveLeft();
+           robotArm.grab();
+
+           if (robotArm.scan() === "white"){
+            robotArm.moveRight();
+            robotArm.drop();
+            robotArm.moveLeft();
+           }
+          
+          robotArm.drop();
+         }
+            // Call run to run the animations
+            robotArm.run();
+        </script>
+    </body>
+</html>
